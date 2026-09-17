@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?ccsproject version="1.0"?>
+<projectOptions>
+	<ccsVariant value="0:Eclipse-based"/>
+	<ccsVersion value="12.6.0"/>
+	<deviceVariant value="Cortex R.AM64x"/>
+	<deviceFamily value="TMS470"/>
+	<deviceEndianness value="little"/>
+	<codegenToolVersion value="TICLANG_2.1.3.LTS"/>
+	<isElfFormat value="true"/>
+	<connection value="common/targetdb/connections/TIXDS110_Connection.xml"/>
+	<rts value=""/>
+	<createSlaveProjects value=""/>
+	<ignoreDefaultDeviceSettings value="true"/>
+	<ignoreDefaultCCSSettings value="true"/>
+	<templateProperties value="id=example.projectspec.enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang"/>
+	<origin value="C:\ti\ind_comms_sdk_am64x_09_00_00_03\examples\networking\enet_layer2_icssg\icssg_layer2_switch\am64x-evm\r5fss0-0_freertos\ti-arm-clang\example.projectspec"/>
+	<filesToOpen value=""/>
+	<isTargetManual value="false"/>
+</projectOptions>
