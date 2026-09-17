@@ -1,5 +1,3 @@
-icssg0-p1: Port 2 still LINK DOWN
-icssg0-p1: Port 2 still LINK DOWN
 
 DMSC Firmware Version 8.5.3--v08.05.03 (Chill Capybar
 DMSC Firmware revision 0x8
@@ -8,17 +6,17 @@ DMSC ABI revision 3.1
 Testing DDR memory...
 Test DDR ok
 [BOOTLOADER_PROFILE] Boot Media       : SD Card 
-[BOOTLOADER_PROFILE] Boot Image Size  : 396 KB 
+[BOOTLOADER_PROFILE] Boot Image Size  : 395 KB 
 [BOOTLOADER_PROFILE] Cores present    : 
 r5f0-0
 [BOOTLOADER PROFILE] SYSFW init                       :      11935us 
-[BOOTLOADER PROFILE] System_init                      :     371437us 
-[BOOTLOADER PROFILE] Drivers_open                     :      65710us 
+[BOOTLOADER PROFILE] System_init                      :     367998us 
+[BOOTLOADER PROFILE] Drivers_open                     :      66884us 
 [BOOTLOADER PROFILE] Board_driversOpen                :          0us 
-[BOOTLOADER PROFILE] Sciclient Get Version            :      10117us 
-[BOOTLOADER PROFILE] File read from SD card           :      42417us 
-[BOOTLOADER PROFILE] CPU load                         :     594129us 
-[BOOTLOADER_PROFILE] SBL Total Time Taken             :    1095748us 
+[BOOTLOADER PROFILE] Sciclient Get Version            :      10116us 
+[BOOTLOADER PROFILE] File read from SD card           :      43214us 
+[BOOTLOADER PROFILE] CPU load                         :     593729us 
+[BOOTLOADER_PROFILE] SBL Total Time Taken             :    1093880us 
 
 Image loading done, switching to application ...
 GPIO: base=0x00601000, pin=18, cfg-dir=0
@@ -51,7 +49,7 @@ EnetPhy_bindDriver: PHY 2: OUI:080028 Model:23 Ver:01 <-> 'dp83867' : OK
 
 PHY 1 is alive
 PHY 2 is alive
-icssg0-p1: hEnet=0x7011df40
+icssg0-p1: hEnet=0x7011dec0
 icssg0-p1: Register async IOCTL callback
 icssg0-p1: Register TX timestamp callback
 
@@ -62,7 +60,7 @@ icssg0-p1: Attach core
 Create RX tasks
 ----------------------------------------------
 icssg0-p1: Create RX task
-icssg0-p1: Waiting for link up...
+icssg0-p1: Waiting for any link up...
 
 Enet Multiport Menu:
  'T'  -  Enable timestamp prints
@@ -80,6 +78,39 @@ icssg0-p1: Port 1 link is up
 icssg0-p1: Set port state to 'Forward'
 icssg0-p1: Async IOCTL completed
 icssg0-p1: Async IOCTL completed
+icssg0-p1: Open DMA
+initQs() txFreePktInfoQ initialized with 8 pkts
+28:b5:e8:cc:22:d8
+
+icssg0-p1: Set MAC addr: 02:12:34:56:78:01
+
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+r
+
+Reset statistics
+----------------------------------------------
+icssg0-p1: Reset statistics
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
 s
 
 Print statistics
@@ -87,69 +118,182 @@ Print statistics
 
  icssg0-p1 - PA statistics
 --------------------------------
-  rxErrorSlice0              = 1
+  hostRxByteCnt              = 1268
+  hostTxByteCnt              = 1224
+  hostRxPktCnt               = 11
+  hostTxPktCnt               = 11
+  rxErrorSlice0              = 65
 
 
  icssg0-p1 - Port 1 statistics
 --------------------------------
-  rxGoodFrames            = 1
-  rxMCastFrames           = 2
-  rxCRCErrors             = 1
-  rxClass8                = 2
-  rxClass9                = 2
-  rxBucket2SizedFrame     = 2
-  rxTotalByte             = 228
-  rxTxTotalByte           = 228
+  rxGoodFrames            = 3
+  rxBCastFrames           = 11
+  rxMCastFrames           = 34
+  rxCRCErrors             = 31
+  rxClass0                = 34
+  rxClass8                = 34
+  rxClass9                = 34
+  rxBucket2SizedFrame     = 17
+  rxBucket3SizedFrame     = 8
+  rxBucket4SizedFrame     = 2
+  rxBucket5SizedFrame     = 7
+  rxTotalByte             = 8793
+  rxTxTotalByte           = 8793
 
 
  icssg0-p1 - Port 2 statistics
 --------------------------------
 
-icssg0-p1: Port 2 still LINK DOWN
-icssg0-p1: Port 2 still LINK DOWN
-icssg0-p1: Port 2 still LINK DOWN
-m
+r
 
-Allocated MAC addresses
+Reset statistics
 ----------------------------------------------
-icssg0-p1: 	02:12:34:56:78:01
+icssg0-p1: Reset statistics
+s
 
-icssg0-p1: Port 2 still LINK DOWN
-icssg0-p1: Port 2 still LINK DOWN
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  hostRxByteCnt              = 1268
+  hostTxByteCnt              = 1224
+  hostRxPktCnt               = 11
+  hostTxPktCnt               = 11
+  rxErrorSlice0              = 65
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+r
+
+Reset statistics
+----------------------------------------------
+icssg0-p1: Reset statistics
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  hostRxByteCnt              = 1268
+  hostTxByteCnt              = 1224
+  hostRxPktCnt               = 11
+  hostTxPktCnt               = 11
+  rxErrorSlice0              = 66
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+Icssg_handleLinkDown: icssg0: Port 1: Link down
+
+Icssg_handleLinkUp: icssg0: Port 1: Link up: 100-Mbps Full-Duplex
+
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 1 packets
+icssg0-p1: Received 0 packets
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  hostRxByteCnt              = 1870
+  hostTxByteCnt              = 1806
+  hostRxPktCnt               = 16
+  hostTxPktCnt               = 16
+  port1Q0Overflow            = 57
+  rxErrorSlice0              = 117
+  rxEofShortFrameErrSlice0   = 5
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 28
+  rxBCastFrames           = 24
+  rxMCastFrames           = 79
+  rxCRCErrors             = 56
+  rxMinSizeErrFrame       = 5
+  rxClass0                = 71
+  rxClass8                = 84
+  rxClass9                = 84
+  rx64BSizedFrame         = 15
+  rxBucket1SizedFrame     = 20
+  rxBucket2SizedFrame     = 43
+  rxBucket3SizedFrame     = 9
+  rxBucket4SizedFrame     = 4
+  rxBucket5SizedFrame     = 8
+  rxTotalByte             = 15361
+  rxTxTotalByte           = 15361
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
 x
 Stopping...
 
 Print statistics
 ----------------------------------------------
-icssg0-p1: Open DMA
-initQs() txFreePktInfoQ initialized with 8 pkts
-28:b5:e8:cc:22:d8
-
-icssg0-p1: Set MAC addr: 02:12:34:56:78:01
-
-icssg0-p1: Received 0 packets
 
  icssg0-p1 - PA statistics
 --------------------------------
-  rxErrorSlice0              = 1
+  hostRxByteCnt              = 1870
+  hostTxByteCnt              = 1806
+  hostRxPktCnt               = 16
+  hostTxPktCnt               = 16
+  port1Q0Overflow            = 60
+  rxErrorSlice0              = 120
+  rxEofShortFrameErrSlice0   = 5
 
 
  icssg0-p1 - Port 1 statistics
 --------------------------------
-  rxGoodFrames            = 1
-  rxMCastFrames           = 2
-  rxCRCErrors             = 1
-  rxClass8                = 2
-  rxClass9                = 2
-  rxBucket2SizedFrame     = 2
-  rxTotalByte             = 228
-  rxTxTotalByte           = 228
+  rxGoodFrames            = 28
+  rxBCastFrames           = 24
+  rxMCastFrames           = 82
+  rxCRCErrors             = 59
+  rxMinSizeErrFrame       = 5
+  rxClass0                = 74
+  rxClass8                = 87
+  rxClass9                = 87
+  rx64BSizedFrame         = 15
+  rxBucket1SizedFrame     = 20
+  rxBucket2SizedFrame     = 43
+  rxBucket3SizedFrame     = 9
+  rxBucket4SizedFrame     = 4
+  rxBucket5SizedFrame     = 11
+  rxTotalByte             = 17467
+  rxTxTotalByte           = 17467
 
 
  icssg0-p1 - Port 2 statistics
 --------------------------------
 
 Waiting for RX task 1 to exit
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 0 packets
+icssg0-p1: Received 16 packets
 All RX tasks have exited
 
 Close DMA for all peripherals

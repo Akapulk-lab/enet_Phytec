@@ -1040,29 +1040,33 @@ static void EnetMp_resetStats(EnetMp_PerCtxt *perCtxts,
 
     EnetAppUtils_print("\nReset statistics\r\n");
     EnetAppUtils_print("----------------------------------------------\r\n");
+
     for (i = 0U; i < numPerCtxts; i++)
     {
-        EnetMp_PerCtxt *perCtxt = &gEnetMp.perCtxt[i];
+        EnetMp_PerCtxt *perCtxt = &perCtxts[i];
 
-        EnetAppUtils_print("%s: Reset statistics\r\n", perCtxt->name);
+        EnetAppUtils_print("%s: Reset statistics\r\n",
+                           perCtxt->name);
 
-        ENET_IOCTL_SET_NO_ARGS(&prms);
-        ENET_IOCTL(perCtxt->handleInfo.hEnet, gEnetMp.coreId, ENET_STATS_IOCTL_RESET_HOSTPORT_STATS, &prms, status);
-        if (status != ENET_SOK)
-        {
-            EnetAppUtils_print("%s: Failed to reset  host port stats\r\n", perCtxt->name);
-            continue;
-        }
         for (j = 0U; j < perCtxt->macPortNum; j++)
         {
             macPort = perCtxt->macPort[j];
 
             ENET_IOCTL_SET_IN_ARGS(&prms, &macPort);
-            ENET_IOCTL(perCtxt->handleInfo.hEnet, gEnetMp.coreId, ENET_STATS_IOCTL_RESET_MACPORT_STATS, &prms, status);
+
+            ENET_IOCTL(perCtxt->handleInfo.hEnet,
+                       gEnetMp.coreId,
+                       ENET_STATS_IOCTL_RESET_MACPORT_STATS,
+                       &prms,
+                       status);
+
             if (status != ENET_SOK)
             {
-                EnetAppUtils_print("%s: Failed to reset port %u stats\r\n", perCtxt->name, ENET_MACPORT_ID(macPort));
-                continue;
+                EnetAppUtils_print(
+                    "%s: Failed to reset port %u stats: %d\r\n",
+                    perCtxt->name,
+                    ENET_MACPORT_ID(macPort),
+                    status);
             }
         }
     }
@@ -1480,33 +1484,40 @@ static int32_t EnetMp_waitForLinkUp(EnetMp_PerCtxt *perCtxt)
     IcssgMacPort_SetPortStateInArgs setPortStateInArgs;
     bool linked;
     uint32_t i;
+    uint32_t waitCnt;
     int32_t status = ENET_SOK;
-    uint32_t waitCnt = 0U;
 
-    EnetAppUtils_print("%s: Waiting for link up...\r\n", perCtxt->name);
+    EnetAppUtils_print("%s: Waiting for any link up...\r\n",
+                       perCtxt->name);
 
     for (i = 0U; i < perCtxt->macPortNum; i++)
     {
         macPort = perCtxt->macPort[i];
-        waitCnt = 0U;
         linked = false;
+        waitCnt = 0U;
 
         while (gEnetMp.run && !linked)
         {
             ENET_IOCTL_SET_INOUT_ARGS(&prms, &macPort, &linked);
 
-            ENET_IOCTL(perCtxt->handleInfo.hEnet, gEnetMp.coreId, ENET_PER_IOCTL_IS_PORT_LINK_UP, &prms, status);
+            ENET_IOCTL(perCtxt->handleInfo.hEnet,
+                       gEnetMp.coreId,
+                       ENET_PER_IOCTL_IS_PORT_LINK_UP,
+                       &prms,
+                       status);
+
             if (status != ENET_SOK)
             {
                 EnetAppUtils_print("%s: Failed to get port %u link status: %d\r\n",
-                                   perCtxt->name, ENET_MACPORT_ID(macPort), status);
-                linked = false;
-                break;
+                                   perCtxt->name,
+                                   ENET_MACPORT_ID(macPort),
+                                   status);
+                return status;
             }
 
             if (!linked)
             {
-                ClockP_usleep(1000);
+                ClockP_usleep(1000U);
                 waitCnt++;
 
                 if ((waitCnt % 1000U) == 0U)
@@ -1518,45 +1529,72 @@ static int32_t EnetMp_waitForLinkUp(EnetMp_PerCtxt *perCtxt)
             }
         }
 
-        if (gEnetMp.run)
+        if (!gEnetMp.run)
         {
-            EnetAppUtils_print("%s: Port %u link is %s\r\n",
-                               perCtxt->name, ENET_MACPORT_ID(macPort), linked ? "up" : "down");
-
-            /* Set port to 'Forward' state */
-            if (status == ENET_SOK)
-            {
-                EnetAppUtils_print("%s: Set port state to 'Forward'\r\n", perCtxt->name);
-
-                setPortStateInArgs.macPort   = macPort;
-                setPortStateInArgs.portState = ICSSG_PORT_STATE_FORWARD;
-                ENET_IOCTL_SET_IN_ARGS(&prms, &setPortStateInArgs);
-
-                ENET_IOCTL(perCtxt->handleInfo.hEnet, gEnetMp.coreId, ICSSG_PER_IOCTL_SET_PORT_STATE, &prms, status);
-                if (status == ENET_SINPROGRESS)
-                {
-                    /* Wait for asyc ioctl to complete */
-                    do
-                    {
-                        Enet_poll(perCtxt->handleInfo.hEnet, ENET_EVT_ASYNC_CMD_RESP, NULL, 0U);
-                        status = SemaphoreP_pend(&perCtxt->ayncIoctlSemObj, SystemP_WAIT_FOREVER);
-                        if (SystemP_SUCCESS == status)
-                        {
-                            break;
-                        }
-                    } while (1);
-
-                    status = ENET_SOK;
-                }
-                else
-                {
-                    EnetAppUtils_print("%s: Failed to set port state: %d\n", perCtxt->name, status);
-                }
-            }
+            return ENET_EFAIL;
         }
+
+        EnetAppUtils_print("%s: Port %u link is up\r\n",
+                           perCtxt->name,
+                           ENET_MACPORT_ID(macPort));
+
+        EnetAppUtils_print("%s: Set port state to 'Forward'\r\n",
+                           perCtxt->name);
+
+        setPortStateInArgs.macPort   = macPort;
+        setPortStateInArgs.portState = ICSSG_PORT_STATE_FORWARD;
+
+        ENET_IOCTL_SET_IN_ARGS(&prms, &setPortStateInArgs);
+
+        ENET_IOCTL(perCtxt->handleInfo.hEnet,
+                   gEnetMp.coreId,
+                   ICSSG_PER_IOCTL_SET_PORT_STATE,
+                   &prms,
+                   status);
+
+        if (status == ENET_SINPROGRESS)
+        {
+            do
+            {
+                Enet_poll(perCtxt->handleInfo.hEnet,
+                          ENET_EVT_ASYNC_CMD_RESP,
+                          NULL,
+                          0U);
+
+                status = SemaphoreP_pend(&perCtxt->ayncIoctlSemObj,
+                                         SystemP_WAIT_FOREVER);
+
+                if (status == SystemP_SUCCESS)
+                {
+                    status = ENET_SOK;
+                    break;
+                }
+
+                EnetAppUtils_print("%s: Failed waiting for async IOCTL: %d\r\n",
+                                   perCtxt->name,
+                                   status);
+
+            } while (gEnetMp.run);
+        }
+
+        if (status != ENET_SOK)
+        {
+            EnetAppUtils_print("%s: Failed to set Port %u to Forward: %d\r\n",
+                               perCtxt->name,
+                               ENET_MACPORT_ID(macPort),
+                               status);
+            return status;
+        }
+
+        /*
+         * ВАЖНО:
+         * В тесте с одним кабелем возвращаемся сразу после Port 1.
+         * Не ждём Port 2, иначе DMA откроется только после нажатия 'x'.
+         */
+        return ENET_SOK;
     }
 
-    return status;
+    return ENET_EFAIL;
 }
 
 static void EnetMp_macMode2MacMii(emac_mode macMode,
