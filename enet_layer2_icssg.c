@@ -75,7 +75,7 @@
 /* Max number of ports supported per context */
 #define ENETMP_PORT_MAX                          (ENET_SYSCFG_NUM_EXT_MAC_PORTS)
 
-
+#define DEBUG 1
 /* Max number of hardware RX channels. Note that this is different than Enet LLD's
  * RX channel concept which maps to UDMA hardware RX flows */
 #define ENETMP_HW_RXCH_MAX                       (2U)
@@ -413,13 +413,38 @@ void EnetMp_mainTask(void *args)
 
     for (i = 0U; i < gEnetMp.numPerCtxts; i++)
     {
-        EnetApp_getEnetInstInfo(CONFIG_ENET_ICSS0 + i, &gEnetMp.perCtxt[i].enetType, &gEnetMp.perCtxt[i].instId);
-        gEnetMp.perCtxt[i].name = testParamsName[i].name; /* shallow copy */
+        EnetMp_PerCtxt *perCtxt = &gEnetMp.perCtxt[i];
 
-        EnetApp_getEnetInstMacInfo(gEnetMp.perCtxt[i].enetType,
-                                   gEnetMp.perCtxt[i].instId,
-                                   gEnetMp.perCtxt[i].macPort,
-                                   &gEnetMp.perCtxt[i].macPortNum);
+        EnetApp_getEnetInstInfo(CONFIG_ENET_ICSS0 + i,
+                                &perCtxt->enetType,
+                                &perCtxt->instId);
+
+        perCtxt->name = testParamsName[i].name;
+
+        EnetApp_getEnetInstMacInfo(perCtxt->enetType,
+                                    perCtxt->instId,
+                                    perCtxt->macPort,
+                                    &perCtxt->macPortNum);
+
+        static const uint8_t testMacBase[ENET_MAC_ADDR_LEN] =
+        {
+            0x02, 0x12, 0x34, 0x56, 0x78, 0x01
+        };
+
+        memcpy(perCtxt->macAddr[0], testMacBase, ENET_MAC_ADDR_LEN);
+
+        /*
+         * Если контекстов/портов несколько — MAC обязан отличаться.
+         * Первый контекст: ...:01
+         * Второй контекст: ...:02
+         */
+        perCtxt->macAddr[0][ENET_MAC_ADDR_LEN - 1U] += (uint8_t)i;
+
+        perCtxt->numValidMacAddress = 1U;
+
+        EnetAppUtils_print("%s: static test MAC ",
+                           perCtxt->name);
+        EnetAppUtils_printMacAddr(perCtxt->macAddr[0]);
     }
 
     /* Init driver */
@@ -1908,11 +1933,14 @@ static void EnetMp_rxTask(void *args)
     status = set_priority_queue_mapping(perCtxt, ENET_MAC_PORT_1, prioMap);
     status = set_priority_queue_mapping(perCtxt, ENET_MAC_PORT_2, prioMap);
 
-   // status = EnetMp_waitForLinkUp(perCtxt);
+    status = EnetMp_waitForLinkUp(perCtxt);
+    /*
     EnetMp_monitorLinks(perCtxt);
 
-    /* monitor завершается только после команды 'x' */
-    status = ENET_EFAIL;
+
+    status = ENET_EFAIL;*/
+
+
     if (status != ENET_SOK)
     {
         EnetAppUtils_print("%s: Failed to wait for link up: %d\n", perCtxt->name, status);

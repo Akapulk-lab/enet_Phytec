@@ -1,7 +1,7 @@
 [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc_tmp] Parsing file ...
 Found section 0 with adddress 0x00000000, size 0x00000040 bytes
 Found section 1 with adddress 0x70080000, size 0x00040930 bytes
-Found section 2 with adddress 0x700c0930, size 0x00011e50 bytes
+Found section 2 with adddress 0x700c0930, size 0x00011e20 bytes
 Found section 3 with adddress 0x700d2780, size 0x0000d07c bytes
 Found section 4 with adddress 0x7011c240, size 0x000023c0 bytes
 Found section 5 with adddress 0x7011e600, size 0x00000c20 bytes
@@ -10,8 +10,7 @@ Found section 7 with adddress 0x7011f6c0, size 0x000002c0 bytes
 Found section 8 with adddress 0x7011f980, size 0x00000140 bytes
 Found section 9 with adddress 0x7011fac0, size 0x00000008 bytes
 [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc_tmp] Found 10 sections. 10 are non-XIP sections, 0 are XIP sections, NON-XIP entryPoint = 0x00000000
-Merging section @ 0x700c0930 of size 0x00011e50, with section @ 0x70080000 of size 0x00040930
-Merging section @ 0x700d2780 of size 0x0000d07c, with section @ 0x70080000 of size 0x00052780
+Merging section @ 0x700c0930 of size 0x00011e20, with section @ 0x70080000 of size 0x00040930
 Merging section @ 0x7011e600 of size 0x00000c20, with section @ 0x7011c240 of size 0x000023c0
 Merging section @ 0x7011f220 of size 0x000004a0, with section @ 0x7011c240 of size 0x00002fe0
 Merging section @ 0x7011f6c0 of size 0x000002c0, with section @ 0x7011c240 of size 0x00003480
@@ -19,11 +18,12 @@ Merging section @ 0x7011f980 of size 0x00000140, with section @ 0x7011c240 of si
 Merging section @ 0x7011fac0 of size 0x00000008, with section @ 0x7011c240 of size 0x00003880
 Writing section header  #0, adddress 0x00000000, size 0x00000040 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
 Writing section data with adddress 0x00000000, size 0x00000040 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
-Writing section header  #1, adddress 0x70080000, size 0x0005f7fc bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
+Writing section header  #1, adddress 0x70080000, size 0x00052750 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
 Writing section data with adddress 0x70080000, size 0x00040930 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
-Writing section data with adddress 0x700c0930, size 0x00011e50 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
+Writing section data with adddress 0x700c0930, size 0x00011e20 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
+Writing section header  #2, adddress 0x700d2780, size 0x0000d07c bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
 Writing section data with adddress 0x700d2780, size 0x0000d07c bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
-Writing section header  #2, adddress 0x7011c240, size 0x00003888 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
+Writing section header  #3, adddress 0x7011c240, size 0x00003888 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
 Writing section data with adddress 0x7011c240, size 0x000023c0 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
 Writing section data with adddress 0x7011e600, size 0x00000c20 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
 Writing section data with adddress 0x7011f220, size 0x000004a0 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
@@ -32,8 +32,9 @@ Writing section data with adddress 0x7011f980, size 0x00000140 bytes to file [D:
 Writing section data with adddress 0x7011fac0, size 0x00000008 bytes to file [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc]
 [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc] Parsing file ...
 Found section 0 with adddress 0x00000000, size 0x00000040 bytes
-Found section 1 with adddress 0x70080000, size 0x0005f7fc bytes
-Found section 2 with adddress 0x7011c240, size 0x00003888 bytes
-[D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc] Found 3 sections. 3 are non-XIP sections, 0 are XIP sections, NON-XIP entryPoint = 0x00000000
+Found section 1 with adddress 0x70080000, size 0x00052750 bytes
+Found section 2 with adddress 0x700d2780, size 0x0000d07c bytes
+Found section 3 with adddress 0x7011c240, size 0x00003888 bytes
+[D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc] Found 4 sections. 4 are non-XIP sections, 0 are XIP sections, NON-XIP entryPoint = 0x00000000
 [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc_xip] Parsing file ...
 [D:/WorkSpace/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang/Debug/enet_layer2_icssg_am64x-evm_r5fss0-0_freertos_ti-arm-clang.rprc_xip] Found 0 sections. 0 are non-XIP sections, 0 are XIP sections, NON-XIP entryPoint = 0x00000000
