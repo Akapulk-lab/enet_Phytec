@@ -92,8 +92,8 @@ static void EnetBoard_setEnetControl(Enet_Type enetType,
 static const Dp83867_Cfg gEnetCpbBoard_dp83867PhyCfg =
 {
 /* The delay values are set based on trial and error and not tuned per port of the evm */
-    .txClkShiftEn         = true,
-    .rxClkShiftEn         = true,
+     .txClkShiftEn         = false,
+     .rxClkShiftEn         = false,
     .txDelayInPs          = 250U,   /* 0.25 ns */
     .rxDelayInPs          = 2000U,  /* 2.00 ns */
     .txFifoDepth          = 4U,
@@ -315,7 +315,11 @@ static const EnetBoard_PortCfg gPhytecBoard_EthPort[] =
 {
     /* --- Dual-MAC (если понадобится потом) --- */
     { .enetType = ENET_ICSSG_DUALMAC, .instId = 0U, .macPort = ENET_MAC_PORT_1,
-      .mii = { ENET_MAC_LAYER_MII, ENET_MAC_SUBLAYER_STANDARD },
+      .mii = {
+    ENET_MAC_LAYER_MII,
+    ENET_MAC_SUBLAYER_STANDARD,
+    ENET_MAC_VARIANT_NONE
+},
       .phyCfg   =
           {
               .phyAddr         = 1U,
@@ -327,7 +331,11 @@ static const EnetBoard_PortCfg gPhytecBoard_EthPort[] =
           .flags = 0U,
       },
     { .enetType = ENET_ICSSG_DUALMAC, .instId = 1U, .macPort = ENET_MAC_PORT_1,
-      .mii = { ENET_MAC_LAYER_MII, ENET_MAC_SUBLAYER_STANDARD },
+      .mii = {
+    ENET_MAC_LAYER_MII,
+    ENET_MAC_SUBLAYER_STANDARD,
+    ENET_MAC_VARIANT_NONE
+},
       .phyCfg   =
           {
               .phyAddr         = 1U,
@@ -341,7 +349,11 @@ static const EnetBoard_PortCfg gPhytecBoard_EthPort[] =
 
     /* --- Switch (то что SysConfig сейчас генерирует) --- */
     { .enetType = ENET_ICSSG_SWITCH, .instId = 0U, .macPort = ENET_MAC_PORT_1,
-      .mii = { ENET_MAC_LAYER_MII, ENET_MAC_SUBLAYER_STANDARD },
+      .mii = {
+    ENET_MAC_LAYER_MII,
+    ENET_MAC_SUBLAYER_STANDARD,
+    ENET_MAC_VARIANT_NONE
+},
       .phyCfg =
       {
               .phyAddr          = 1U,
@@ -353,7 +365,11 @@ static const EnetBoard_PortCfg gPhytecBoard_EthPort[] =
           .flags = 0U,
       },
     { .enetType = ENET_ICSSG_SWITCH, .instId = 0U, .macPort = ENET_MAC_PORT_2,
-      .mii = { ENET_MAC_LAYER_MII, ENET_MAC_SUBLAYER_STANDARD },
+      .mii = {
+    ENET_MAC_LAYER_MII,
+    ENET_MAC_SUBLAYER_STANDARD,
+    ENET_MAC_VARIANT_NONE
+    },
       .phyCfg =
       {
               .phyAddr          = 2U,

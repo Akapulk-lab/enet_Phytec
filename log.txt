@@ -1,0 +1,522 @@
+
+DMSC Firmware Version 8.5.3--v08.05.03 (Chill Capybar
+DMSC Firmware revision 0x8
+DMSC ABI revision 3.1
+
+Testing DDR memory...
+Test DDR ok
+[BOOTLOADER_PROFILE] Boot Media       : SD Card 
+[BOOTLOADER_PROFILE] Boot Image Size  : 396 KB 
+[BOOTLOADER_PROFILE] Cores present    : 
+r5f0-0
+[BOOTLOADER PROFILE] SYSFW init                       :      11935us 
+[BOOTLOADER PROFILE] System_init                      :     371113us 
+[BOOTLOADER PROFILE] Drivers_open                     :      65486us 
+[BOOTLOADER PROFILE] Board_driversOpen                :          0us 
+[BOOTLOADER PROFILE] Sciclient Get Version            :      10105us 
+[BOOTLOADER PROFILE] File read from SD card           :      42010us 
+[BOOTLOADER PROFILE] CPU load                         :     594293us 
+[BOOTLOADER_PROFILE] SBL Total Time Taken             :    1094946us 
+
+Image loading done, switching to application ...
+GPIO: base=0x00601000, pin=18, cfg-dir=0
+GPIO18 LOW: OUT=0
+GPIO18 HIGH: OUT=1
+==========================
+      MULTIPORT TEST      
+==========================
+
+Init all peripheral clocks
+----------------------------------------------
+Enabling clocks!
+
+Open all peripherals
+----------------------------------------------
+
+Init  configs EnetType:2, InstId :0
+----------------------------------------------
+icssg0-p1: Open port 1
+lookup: enetType=2 instId=0 macPort=0 layer=1 sub=0
+icssg0-p1: port=1 PHY=1 strapped=0 skipExt=0 layer=1 sublayer=0
+EnetPhy_bindDriver: PHY 1: OUI:080028 Model:23 Ver:01 <-> 'dp83867' : OK
+
+icssg0-p1: Open port 2
+lookup: enetType=2 instId=0 macPort=1 layer=1 sub=0
+icssg0-p1: port=2 PHY=2 strapped=0 skipExt=0 layer=1 sublayer=0
+EnetPhy_bindDriver: PHY 2: OUI:080028 Model:23 Ver:01 <-> 'dp83867' : OK
+
+PHY 1 is alive
+PHY 2 is alive
+icssg0-p1: hEnet=0x7011df40
+icssg0-p1: Register async IOCTL callback
+icssg0-p1: Register TX timestamp callback
+
+Attach core id 1 on all peripherals
+----------------------------------------------
+icssg0-p1: Attach core
+
+Create RX tasks
+----------------------------------------------
+icssg0-p1: Create RX task
+icssg0-p1: PHY register diagnostic
+MDIO dump: PHY address 1
+  reg 0x00: status=0 value=0x1140
+  reg 0x01: status=0 value=0x7949
+  reg 0x02: status=0 value=0x2000
+  reg 0x03: status=0 value=0xa231
+  reg 0x04: status=0 value=0x01e1
+  reg 0x05: status=0 value=0x0000
+  reg 0x0a: status=0 value=0x0000
+  reg 0x6e: status=-3 value=0x0000
+  reg 0x6f: status=-3 value=0x0000
+  BMSR(second): status=0 value=0x7949 link=0
+MDIO dump: PHY address 2
+  reg 0x00: status=0 value=0x1140
+  reg 0x01: status=0 value=0x7949
+  reg 0x02: status=0 value=0x2000
+  reg 0x03: status=0 value=0xa231
+  reg 0x04: status=0 value=0x01e1
+  reg 0x05: status=0 value=0x0000
+  reg 0x0a: status=0 value=0x0000
+  reg 0x6e: status=-3 value=0x0000
+  reg 0x6f: status=-3 value=0x0000
+  BMSR(second): status=0 value=0x7949 link=0
+
+Enet Multiport Menu:
+ 'T'  -  Enable timestamp prints
+ 't'  -  Disable timestamp prints
+ 's'  -  Print statistics
+ 'r'  -  Reset statistics
+ 'm'  -  Show allocated MAC addresses
+ 'd'  -  Enable dscp based priority mapping
+ 'x'  -  Stop the test
+
+Icssg_handleLinkUp: icssg0: Port 1: Link up: 100-Mbps Full-Duplex
+
+ы
+Invalid option, try again...
+
+Enet Multiport Menu:
+ 'T'  -  Enable timestamp prints
+ 't'  -  Disable timestamp prints
+ 's'  -  Print statistics
+ 'r'  -  Reset statistics
+ 'm'  -  Show allocated MAC addresses
+ 'd'  -  Enable dscp based priority mapping
+ 'x'  -  Stop the test
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 3
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 1
+  rxBCastFrames           = 1
+  rxMCastFrames           = 4
+  rxCRCErrors             = 3
+  rxClass6                = 1
+  rxClass8                = 4
+  rxClass9                = 4
+  rxBucket2SizedFrame     = 3
+  rxBucket4SizedFrame     = 1
+  rxTotalByte             = 685
+  rxTxTotalByte           = 685
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 3
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 2
+  rxBCastFrames           = 1
+  rxMCastFrames           = 5
+  rxCRCErrors             = 3
+  rxClass6                = 1
+  rxClass8                = 5
+  rxClass9                = 5
+  rxBucket2SizedFrame     = 4
+  rxBucket4SizedFrame     = 1
+  rxTotalByte             = 751
+  rxTxTotalByte           = 751
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 3
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 2
+  rxBCastFrames           = 1
+  rxMCastFrames           = 5
+  rxCRCErrors             = 3
+  rxClass6                = 1
+  rxClass8                = 5
+  rxClass9                = 5
+  rxBucket2SizedFrame     = 4
+  rxBucket4SizedFrame     = 1
+  rxTotalByte             = 751
+  rxTxTotalByte           = 751
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 4
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 3
+  rxBCastFrames           = 2
+  rxMCastFrames           = 7
+  rxCRCErrors             = 4
+  rxClass6                = 2
+  rxClass8                = 7
+  rxClass9                = 7
+  rxBucket2SizedFrame     = 5
+  rxBucket4SizedFrame     = 2
+  rxTotalByte             = 1208
+  rxTxTotalByte           = 1208
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 4
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 3
+  rxBCastFrames           = 2
+  rxMCastFrames           = 7
+  rxCRCErrors             = 4
+  rxClass6                = 2
+  rxClass8                = 7
+  rxClass9                = 7
+  rxBucket2SizedFrame     = 5
+  rxBucket4SizedFrame     = 2
+  rxTotalByte             = 1208
+  rxTxTotalByte           = 1208
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 4
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 3
+  rxBCastFrames           = 2
+  rxMCastFrames           = 7
+  rxCRCErrors             = 4
+  rxClass6                = 2
+  rxClass8                = 7
+  rxClass9                = 7
+  rxBucket2SizedFrame     = 5
+  rxBucket4SizedFrame     = 2
+  rxTotalByte             = 1208
+  rxTxTotalByte           = 1208
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 4
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 3
+  rxBCastFrames           = 2
+  rxMCastFrames           = 7
+  rxCRCErrors             = 4
+  rxClass6                = 2
+  rxClass8                = 7
+  rxClass9                = 7
+  rxBucket2SizedFrame     = 5
+  rxBucket4SizedFrame     = 2
+  rxTotalByte             = 1208
+  rxTxTotalByte           = 1208
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 4
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 3
+  rxBCastFrames           = 2
+  rxMCastFrames           = 7
+  rxCRCErrors             = 4
+  rxClass6                = 2
+  rxClass8                = 7
+  rxClass9                = 7
+  rxBucket2SizedFrame     = 5
+  rxBucket4SizedFrame     = 2
+  rxTotalByte             = 1208
+  rxTxTotalByte           = 1208
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 4
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 3
+  rxBCastFrames           = 2
+  rxMCastFrames           = 7
+  rxCRCErrors             = 4
+  rxClass6                = 2
+  rxClass8                = 7
+  rxClass9                = 7
+  rxBucket2SizedFrame     = 5
+  rxBucket4SizedFrame     = 2
+  rxTotalByte             = 1208
+  rxTxTotalByte           = 1208
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 4
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 3
+  rxBCastFrames           = 2
+  rxMCastFrames           = 7
+  rxCRCErrors             = 4
+  rxClass6                = 2
+  rxClass8                = 7
+  rxClass9                = 7
+  rxBucket2SizedFrame     = 5
+  rxBucket4SizedFrame     = 2
+  rxTotalByte             = 1208
+  rxTxTotalByte           = 1208
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+Icssg_handleLinkDown: icssg0: Port 1: Link down
+
+Icssg_handleLinkUp: icssg0: Port 1: Link up: 100-Mbps Full-Duplex
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 13
+  rxEofShortFrameErrSlice0   = 1
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 7
+  rxBCastFrames           = 4
+  rxMCastFrames           = 20
+  rxCRCErrors             = 14
+  rxMinSizeErrFrame       = 1
+  rxClass6                = 4
+  rxClass8                = 21
+  rxClass9                = 21
+  rxBucket1SizedFrame     = 1
+  rxBucket2SizedFrame     = 15
+  rxBucket3SizedFrame     = 1
+  rxBucket4SizedFrame     = 4
+  rxTotalByte             = 3185
+  rxTxTotalByte           = 3185
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+Icssg_handleLinkDown: icssg0: Port 1: Link down
+
+Icssg_handleLinkUp: icssg0: Port 1: Link up: 100-Mbps Full-Duplex
+
+s
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 19
+  rxEofShortFrameErrSlice0   = 2
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 13
+  rxBCastFrames           = 7
+  rxMCastFrames           = 32
+  rxCRCErrors             = 20
+  rxMinSizeErrFrame       = 2
+  rxClass6                = 7
+  rxClass8                = 34
+  rxClass9                = 34
+  rxBucket1SizedFrame     = 2
+  rxBucket2SizedFrame     = 23
+  rxBucket3SizedFrame     = 2
+  rxBucket4SizedFrame     = 7
+  rxTotalByte             = 5202
+  rxTxTotalByte           = 5202
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+x
+Stopping...
+
+Print statistics
+----------------------------------------------
+
+ icssg0-p1 - PA statistics
+--------------------------------
+  rxErrorSlice0              = 19
+  rxEofShortFrameErrSlice0   = 2
+
+
+ icssg0-p1 - Port 1 statistics
+--------------------------------
+  rxGoodFrames            = 13
+  rxBCastFrames           = 7
+  rxMCastFrames           = 32
+  rxCRCErrors             = 20
+  rxMinSizeErrFrame       = 2
+  rxClass6                = 7
+  rxClass8                = 34
+  rxClass9                = 34
+  rxBucket1SizedFrame     = 2
+  rxBucket2SizedFrame     = 23
+  rxBucket3SizedFrame     = 2
+  rxBucket4SizedFrame     = 7
+  rxTotalByte             = 5202
+  rxTxTotalByte           = 5202
+
+
+ icssg0-p1 - Port 2 statistics
+--------------------------------
+
+Waiting for RX task 1 to exit
+icssg0-p1: Failed to wait for link up: -1
+All RX tasks have exited
+
+Close DMA for all peripherals
+----------------------------------------------
+icssg0-p1: Close DMA
+
+Delete RX tasks
+----------------------------------------------
+
+Detach core from all peripherals
+----------------------------------------------
+icssg0-p1: Detach core
+
+Close all peripherals
+----------------------------------------------
+icssg0-p1: Close enet
+icssg0-p1: Unregister async IOCTL callback
+icssg0-p1: Unregister TX timestamp callback
+Icssg_unregisterEventCb: icssg0: event not registered 1
+
+Unregister TX timestamp callback
+Icssg_unregisterEventCb: icssg0: event not registered 64
+
+Icssg_handleLinkDown: icssg0: Port 1: Link down
+
+RingMemQ: Before: 3, after: 0
+DmaDesQ: Before: 24, after: 0
+Assertion @ Line: 655 in /nightlybuilds/mcupsdk_internal/jenkins/mcu_plus_sdk_am64x_09_00_00_35/source/networking/enet/utils/enet_appmemutils.c: ENET_SOK == status : failed !!!
