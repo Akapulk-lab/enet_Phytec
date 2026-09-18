@@ -282,6 +282,22 @@ static void EnetMp_destroyRxTask(EnetMp_PerCtxt *perCtxt);
 
 static void EnetMp_rxTask(void *args);
 
+static void EnetMp_dumpPhy(Enet_Handle hEnet,
+                           uint32_t coreId,
+                           uint32_t phyAddr);
+static int32_t EnetMp_writePhyC22(Enet_Handle hEnet,
+                                  uint32_t coreId,
+                                  uint32_t phyAddr,
+                                  uint16_t reg,
+                                  uint16_t value);
+static int32_t EnetMp_readMdioC22Raw(uint32_t phyAddr,
+                                     uint32_t phyReg,
+                                     uint16_t *value);
+
+static int32_t EnetMp_writeMdioC22Raw(uint32_t phyAddr,
+                                      uint32_t phyReg,
+                                      uint16_t value);
+
 extern uint32_t Board_getPhyAddr(void);
 
 #define ICSSG_MDIO_BASE_ADDR CSL_PRU_ICSSG0_PR1_MDIO_V1P7_MDIO_BASE
@@ -294,7 +310,7 @@ extern uint32_t Board_getPhyAddr(void);
 #define USERACCESS_ACK         0x20000000U
 #define USERACCESS_DATA        0x0000FFFFU
 
-
+#define USERACCESS_WRITE       0x40000000U
 /* ========================================================================== */
 /*                            Global Variables                                */
 /* ========================================================================== */
@@ -459,6 +475,9 @@ void EnetMp_mainTask(void *args)
 
     if (status == ENET_SOK)
     {
+        EnetMp_dumpPhy(gEnetMp.perCtxt[0].handleInfo.hEnet,
+                               gEnetMp.coreId,
+                               1U);
         /* Wait for user input to exit the test */
         EnetMp_showMenu();
         while (true)
@@ -1290,6 +1309,76 @@ static void mdio_wait_for_user_access(void)
         EnetAppUtils_print("MDIO: wait_for_user_access timeout!\r\n");
     }
 }
+static int32_t EnetMp_writeMdioC22Raw(uint32_t phyAddr,
+                                      uint32_t phyReg,
+                                      uint16_t value)
+{
+    uintptr_t base = (uintptr_t)CSL_PRU_ICSSG0_PR1_MDIO_V1P7_MDIO_BASE;
+    uint32_t cmd;
+    uint32_t timeout = 1000000U;
+
+    if ((phyAddr > 31U) || (phyReg > 31U))
+    {
+        return ENET_EINVALIDPARAMS;
+    }
+
+    cmd = USERACCESS_GO |
+          USERACCESS_WRITE |
+          ((phyReg & 0x1FU) << 21U) |
+          ((phyAddr & 0x1FU) << 16U) |
+          ((uint32_t)value & USERACCESS_DATA);
+
+    WR_MEM_32(base + CPSW_MDIO_USERACCESS0, cmd);
+
+    do
+    {
+        cmd = RD_MEM_32(base + CPSW_MDIO_USERACCESS0);
+        timeout--;
+    }
+    while (((cmd & USERACCESS_GO) != 0U) && (timeout != 0U));
+
+    if (timeout == 0U)
+    {
+        EnetAppUtils_print("MDIO write TIMEOUT: phy=%u reg=0x%02x\r\n",
+                           phyAddr, phyReg);
+        return ENET_ETIMEOUT;
+    }
+
+    return ENET_SOK;
+}
+
+static int32_t EnetMp_readPhyMmd(uint32_t phyAddr,
+                                 uint16_t devAddr,
+                                 uint16_t regAddr,
+                                 uint16_t *value)
+{
+    int32_t status;
+
+    if (value == NULL)
+    {
+        return ENET_EINVALIDPARAMS;
+    }
+
+    status = EnetMp_writeMdioC22Raw(phyAddr, 0x0DU, devAddr);
+    if (status != ENET_SOK)
+    {
+        return status;
+    }
+
+    status = EnetMp_writeMdioC22Raw(phyAddr, 0x0EU, regAddr);
+    if (status != ENET_SOK)
+    {
+        return status;
+    }
+
+    status = EnetMp_writeMdioC22Raw(phyAddr, 0x0DU, (uint16_t)(0x4000U | devAddr));
+    if (status != ENET_SOK)
+    {
+        return status;
+    }
+
+    return EnetMp_readMdioC22Raw(phyAddr, 0x0EU, value);
+}
 
 static int32_t EnetMp_readMdioC22Raw(uint32_t phyAddr,
                                      uint32_t phyReg,
@@ -1392,47 +1481,24 @@ static void EnetMp_dumpPhy(Enet_Handle hEnet,
         0x6FU, /* DP83867 STRAP_STS2 */
     };
 
-    uint32_t i;
-    uint16_t value;
-    int32_t status;
+            uint16_t rgmiiCtl  = 0U;
+            uint16_t rgmiiDctl = 0U;
+            uint16_t strapSts1 = 0U;
+            uint16_t strapSts2 = 0U;
 
-    mdio_init();
+            (void)EnetMp_readPhyMmd(phyAddr, 0x001FU, 0x0032U, &rgmiiCtl);
+            (void)EnetMp_readPhyMmd(phyAddr, 0x001FU, 0x0086U, &rgmiiDctl);
+            (void)EnetMp_readPhyMmd(phyAddr, 0x001FU, 0x006EU, &strapSts1);
+            (void)EnetMp_readPhyMmd(phyAddr, 0x001FU, 0x006FU, &strapSts2);
 
-    EnetAppUtils_print("MDIO dump: PHY address %u\r\n",
-                       phyAddr);
-
-    for (i = 0U; i < ENET_ARRAYSIZE(regs); i++)
-    {
-        value = 0U;
-
-        status = EnetMp_readMdioC22Raw(phyAddr,
-                               regs[i],
-                               &value);
-
-        EnetAppUtils_print("  reg 0x%02x: status=%d value=0x%04x\r\n",
-                           regs[i],
-                           status,
-                           value);
-    }
-
-    /*
-     * BMSR link bit is latch-low.
-     * The second read is the meaningful one.
-     */
-    value = 0U;
-
-    (void)EnetMp_readMdioC22Raw(phyAddr,
-                        0x01U,
-                        &value);
-
-    status = EnetMp_readMdioC22Raw(phyAddr,
-                           0x01U,
-                           &value);
-
-    EnetAppUtils_print("  BMSR(second): status=%d value=0x%04x link=%u\r\n",
-                       status,
-                       value,
-                       (value >> 2U) & 1U);
+            EnetAppUtils_print("  MMD 0x0032 RGMIICTL : 0x%04x  RGMII_EN=%u\r\n",
+                               rgmiiCtl, (rgmiiCtl >> 7U) & 1U);
+            EnetAppUtils_print("  MMD 0x0086 RGMIIDCTL: 0x%04x  RX_DLY=0x%x TX_DLY=0x%x\r\n",
+                               rgmiiDctl,
+                               (rgmiiDctl >> 4U) & 0xFU,
+                               rgmiiDctl & 0xFU);
+            EnetAppUtils_print("  MMD 0x006E STRAP1   : 0x%04x\r\n", strapSts1);
+            EnetAppUtils_print("  MMD 0x006F STRAP2   : 0x%04x\r\n", strapSts2);
 }
 static void EnetMp_monitorLinks(EnetMp_PerCtxt *perCtxt)
 {
@@ -2186,4 +2252,25 @@ static void EnetMp_rxTask(void *args)
 
     SemaphoreP_post(&perCtxt->rxDoneSemObj);
     TaskP_exit();
+}
+static int32_t EnetMp_writePhyC22(Enet_Handle hEnet,
+                                  uint32_t coreId,
+                                  uint32_t phyAddr,
+                                  uint16_t reg,
+                                  uint16_t value)
+{
+    Enet_IoctlPrms prms;
+    EnetMdio_C22WriteInArgs inArgs;
+    int32_t status;
+
+    memset(&inArgs, 0, sizeof(inArgs));
+    inArgs.group   = ENET_MDIO_GROUP_0;
+    inArgs.phyAddr = phyAddr;
+    inArgs.reg     = reg;
+    inArgs.val     = value;
+
+    ENET_IOCTL_SET_IN_ARGS(&prms, &inArgs);
+    ENET_IOCTL(hEnet, coreId, ENET_MDIO_IOCTL_C22_WRITE, &prms, status);
+
+    return status;
 }
