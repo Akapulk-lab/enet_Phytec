@@ -1,139 +1,315 @@
-
-DMSC Firmware Version 8.5.3--v08.05.03 (Chill Capybar
-DMSC Firmware revision 0x8
-DMSC ABI revision 3.1
-
-Testing DDR memory...
-Test DDR ok
-[BOOTLOADER_PROFILE] Boot Media       : SD Card 
-[BOOTLOADER_PROFILE] Boot Image Size  : 397 KB 
-[BOOTLOADER_PROFILE] Cores present    : 
-r5f0-0
-[BOOTLOADER PROFILE] SYSFW init                       :      11935us 
-[BOOTLOADER PROFILE] System_init                      :     368486us 
-[BOOTLOADER PROFILE] Drivers_open                     :      63056us 
-[BOOTLOADER PROFILE] Board_driversOpen                :          0us 
-[BOOTLOADER PROFILE] Sciclient Get Version            :      10120us 
-[BOOTLOADER PROFILE] File read from SD card           :      43736us 
-[BOOTLOADER PROFILE] CPU load                         :     595713us 
-[BOOTLOADER_PROFILE] SBL Total Time Taken             :    1093050us 
-
-Image loading done, switching to application ...
-GPIO: base=0x00601000, pin=18, cfg-dir=0
-GPIO18 LOW: OUT=0
-GPIO18 HIGH: OUT=1
-==========================
-      MULTIPORT TEST      
-==========================
-icssg0-p1: static test MAC 02:12:34:56:78:01
-
-
-Init all peripheral clocks
-----------------------------------------------
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+Icssg_handleLinkDown:2529 
+Icssg_handleLinkUp:2510 
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 3 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+Icssg_handleLinkDown:2529 
+Icssg_handleLinkUp:2510 
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+Icssg_handleLinkDown:2529 
+Icssg_handleLinkUp:2510 
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Received 0 packets
+icssg0: Received 3 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 3 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+Icssg_handleLinkDown:2529 
+Icssg_handleLinkUp:2510 
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 2 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+icssg0: Received 0 packets
+icssg0: Received 1 packets
+icssg0: Drop due to TX pkt not available
+ 
+From: sedov@diakont.com 
+Sent: Tuesday, September 22, 2026 3:35 PM
+To: Шиляев Андрей 
+Subject: Re: Логи PHYTEC
+ 
+https://www.perplexity.ai/search/143394b4-1957-44a4-9fb0-b51a22d8b5a6
+ 
+From: sedov@diakont.com 
+Sent: Tuesday, September 15, 2026 12:17 PM
+To: Шиляев Андрей 
+Subject: Re: Логи PHYTEC
+ 
+Короче нашел файл с обработчиком очереди DMA
+нас интересует функция  чтения папетов из очереди 
+void free_rtos::rxIsrHandler(void *appData)
+{
+    EthRxFlow * rx_flow = (EthRxFlow *)appData;
+ 
+    if(rx_flow == nullptr) {
+        return;
+    }
+ 
+    rx_flow->retrieveReadyRxPktQ();
+    rx_flow->sem_[EthRxFlow::e_signalRxPkt].post();
+}
+ 
+void free_rtos::rxTaskHandler(void *appData)
+{
+    EthRxFlow * rx_flow = (EthRxFlow *)appData;
+    if (rx_flow != nullptr) {
+        rx_flow->rxProcessPktTask();
+    }
+}
+void free_rtos::EthRxFlow::retrieveReadyRxPktQ() {
+#if defined(CPU_SINGLE) || defined(CPU1)
+    int32_t status = EnetDma_retrieveRxPktQ(dma_handle_, &rx_ready_pktq_);
+    EnetAppUtils_assert(status == ENET_SOK);
+#endif
+}
+предлагаю добавить счетчики
+volatile uint32_t rx_irq_count_ = 0; 
+volatile uint32_t rx_retrieve_count_ = 0; 
+volatile uint32_t rx_ready_count_ = 0;
+выглядеть будет ак 
+void free_rtos::rxIsrHandler(void *appData) { 
+EthRxFlow *rx_flow = (EthRxFlow *)appData; 
+if (rx_flow == nullptr) { return; } 
+rx_flow->rx_irq_count_++; 
+rx_flow->retrieveReadyRxPktQ(); 
+rx_flow->sem_[EthRxFlow::e_signalRxPkt].post(); 
+}
++ в retrieveReadyRxPktQ()
+void free_rtos::EthRxFlow::retrieveReadyRxPktQ() {
+#if defined(CPU_SINGLE) || defined(CPU1)
+    uint32_t countBefore = EnetQueue_getQCount(&rx_ready_pktq_); 
+int32_t status = EnetDma_retrieveRxPktQ(dma_handle_, &rx_ready_pktq_); 
+uint32_t countAfter = EnetQueue_getQCount(&rx_ready_pktq_); 
+EnetAppUtils_assert(status == ENET_SOK); 
+if (countAfter > countBefore) 
+{ rx_ready_count_ += (countAfter - countBefore); }
+#endif
+}
+From: Шиляев Андрей 
+Sent: Tuesday, September 15, 2026 11:29 AM
+To: sedov@diakont.com 
+Subject: Логи PHYTEC
+ 
+icssg0: Init peripheral clocks
 Enabling clocks!
-
-Open all peripherals
-----------------------------------------------
-
+icssg0: Open enet driver
+ 
 Init  configs EnetType:2, InstId :0
 ----------------------------------------------
-icssg0-p1: Open port 1
-lookup: enetType=2 instId=0 macPort=0 layer=1 sub=0
-icssg0-p1: port=1 PHY=1 strapped=0 skipExt=0 layer=1 sublayer=0
-EnetPhy_bindDriver: PHY 1: OUI:080028 Model:23 Ver:01 <-> 'dp83867' : OK
-
-icssg0-p1: Open port 2
-lookup: enetType=2 instId=0 macPort=1 layer=1 sub=0
-icssg0-p1: port=2 PHY=2 strapped=0 skipExt=0 layer=1 sublayer=0
-EnetPhy_bindDriver: PHY 2: OUI:080028 Model:23 Ver:01 <-> 'dp83867' : OK
-
+Mdio_open:282 
+Open mac port 1
+EnetPhy_bindDriver:1718 
+Open mac port 2
+EnetPhy_bindDriver:1718 
 PHY 1 is alive
 PHY 2 is alive
-icssg0-p1: hEnet=0x7011e2c0
-icssg0-p1: Register async IOCTL callback
-icssg0-p1: Register TX timestamp callback
-
-Attach core id 1 on all peripherals
-----------------------------------------------
-icssg0-p1: Attach core
-
-Create RX tasks
-----------------------------------------------
-icssg0-p1: Create RX task
-icssg0-p1: Waiting for any link up...
-  MMD 0x0032 RGMIICTL : 0x0050  RGMII_EN=0
-  MMD 0x0086 RGMIIDCTL: 0x0077  RX_DLY=0x7 TX_DLY=0x7
-  MMD 0x006E STRAP1   : 0x3001
-  MMD 0x006F STRAP2   : 0x0100
-
-Enet Multiport Menu:
- 'T'  -  Enable timestamp prints
- 't'  -  Disable timestamp prints
- 's'  -  Print statistics
- 'r'  -  Reset statistics
- 'm'  -  Show allocated MAC addresses
- 'd'  -  Enable dscp based priority mapping
- 'x'  -  Stop the test
-
-icssg0-p1: Port 1 still LINK DOWN
-Icssg_handleLinkUp: icssg0: Port 1: Link up: 100-Mbps Full-Duplex
-
-icssg0-p1: Port 1 link is up
-icssg0-p1: Set port state to 'Forward'
-icssg0-p1: Async IOCTL completed
-icssg0-p1: Async IOCTL completed
-icssg0-p1: Open DMA
-initQs() txFreePktInfoQ initialized with 8 pkts
-28:b5:e8:cc:22:d8
-
-icssg0-p1: Set MAC addr: 02:12:34:56:78:01
-
-icssg0-p1: Received 1 packets
-icssg0-p1: Received 0 packets
-icssg0-p1: Received 1 packets
-icssg0-p1: Received 0 packets
-icssg0-p1: Received 1 packets
-icssg0-p1: Received 0 packets
-icssg0-p1: Received 1 packets
-icssg0-p1: Received 0 packets
-icssg0-p1: Received 1 packets
-icssg0-p1: Received 0 packets
-icssg0-p1: Received 1 packets
-icssg0-p1: Received 0 packets
-icssg0-p1: Received 2 packets
-icssg0-p1: Received 0 packets
-s
-
-Print statistics
-----------------------------------------------
-
- icssg0-p1 - PA statistics
---------------------------------
-  hostRxByteCnt              = 944
-  hostTxByteCnt              = 1022
-  hostRxPktCnt               = 8
-  hostTxPktCnt               = 8
-  port1Q0Overflow            = 53
-
-
- icssg0-p1 - Port 1 statistics
---------------------------------
-  rxGoodFrames            = 79
-  rxBCastFrames           = 33
-  rxMCastFrames           = 79
-  rxClass0                = 71
-  rxClass8                = 79
-  rxClass9                = 79
-  rx64BSizedFrame         = 11
-  rxBucket1SizedFrame     = 11
-  rxBucket2SizedFrame     = 35
-  rxBucket3SizedFrame     = 15
-  rxBucket4SizedFrame     = 7
-  rxBucket5SizedFrame     = 11
-  rxTotalByte             = 18775
-  rxTxTotalByte           = 18775
-
-
- icssg0-p1 - Port 2 statistics
---------------------------------
-
+icssg0: Init handle info
+icssg0: Open peripherals
+icssg0: Register async IOCTL callback
+icssg0: Attach core id 1 on peripherals
+icssg0: Create link tracking tasks
+Icssg_handleLinkUp:2510 
+link_task: icssg0: Port 1 link is up
+link_task: icssg0: Set port state to 'Forward'
+tx_flow 0: opening flow...
+initQs() txFreePktInfoQ initialized with 16 pkts
+tx_flow 0: tx flow open successfully
+rx_flow 0: opening flow...
+rx_flow 0: rx flow open successfully
+icssg0: Host initialisation
+icssg0: Set MAC addr: 70:ff:76:1f:3d:c5
+InitTask::process(): build_status (1)
+InitTask::process(): Peripheral Setup type(0), id(1)
+EthernetServiceLink::build()
+ServiceLinkDriver::init(0,0,0)
+ServiceLinkTask::process() clear all subscribers
+Run ServiceLinkTask::process()
+PingHandler::PingHandler()
+registerMessageHandler(PingHandler)
+ServiceLink::registerMessageHandler(): Сreate UDP client message_id(1024), port(7004)
+InitTask::process(): build_status (1)
+InitTask::process(): Peripheral Setup type(3), id(0)
+InitTask::process(): build_status (1)
+InitTask::process(): Peripheral Setup type(2), id(1)
+EthercatMaster starting. Initializing slaves...
